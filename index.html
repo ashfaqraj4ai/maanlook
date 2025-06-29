@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to My Website</title>
+  <meta charset="UTF-8">
+  <title>Dress Material Display</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-      padding: 100px;
+      font-family: sans-serif;
+      padding: 20px;
     }
-    h1 {
-      color: #333;
+    .container {
+      display: flex;
+      gap: 20px;
     }
-    p {
+    .card {
+      border: 1px solid #ccc;
+      width: 300px;
+      padding: 10px;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+    .title {
+      font-weight: bold;
       font-size: 18px;
+      margin: 5px 0;
+    }
+    .desc {
+      color: gray;
+    }
+    .price {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 5px;
+      color: #2d2;
     }
   </style>
 </head>
 <body>
-  <h1>Hello from Your Free Website!</h1>
-  <p>This site is hosted for free using GitHub Pages and a free domain.</p>
+
+<h2>Dress Material Collection</h2>
+<div class="container" id="product-list"></div>
+
+<script>
+  const imageList = [
+    'kalini_321.jpg',
+    'taneira_3499.jpg',
+    'kalini_899.jpg'
+  ];
+
+  const container = document.getElementById('product-list');
+
+  imageList.forEach(imageName => {
+    const [brandRaw, priceRaw] = imageName.split('.')[0].split('_');
+    const brand = brandRaw.charAt(0).toUpperCase() + brandRaw.slice(1);
+    const price = `Rs. ${priceRaw}`;
+
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <img src="pic/${imageName}" alt="${brand}">
+      <div class="title">${brand}</div>
+      <div class="desc">Unstitched Dress Material</div>
+      <div class="price">${price}</div>
+    `;
+
+    container.appendChild(card);
+  });
+</script>
+
 </body>
 </html>
