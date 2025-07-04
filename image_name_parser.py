@@ -16,8 +16,8 @@ with open(OUTPUT_JS_FILE, "w") as f:
             if match:
                 name = match.group(1).strip()
                 price = match.group(2)
-                print(f"{name} : {price}")
-                f.write(f"{name} : {price}\n")
+                print(f"{filename} : {name} : {price}")
+                f.write(f"{filename} : {name} : {price}\n")
             else:
                 print(f"Skipping invalid filename: {filename}")
 

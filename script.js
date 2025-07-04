@@ -6,13 +6,9 @@ fetch('image_list.txt')
 
     const lines = data.trim().split('\n');
     lines.forEach(line => {
-      const [name, price] = line.split(':').map(x => x.trim());
+      const [filename, name, price] = line.split(':').map(x => x.trim());
 
-      // Reconstruct the original filename based on name + price
-      const filename = `${name} ${price}`;
-
-      // Try different extensions if needed (e.g., .jpg, .png)
-      const imgSrc = `pic/${filename}.png`; // You can adjust extension
+      const imgSrc = `pic/${filename}`;
 
       const card = document.createElement('div');
       card.className = 'card';
