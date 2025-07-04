@@ -1,4 +1,4 @@
-image1 : 169
-image2 : 169
+image1_newlook : 169
+image2 new dress for : 169
 image3 : 169
 image4 : 321
