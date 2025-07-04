@@ -8,7 +8,7 @@ fetch('image_list.txt')
     lines.forEach(line => {
       const [filename, name, price] = line.split(':').map(x => x.trim());
 
-      const imgSrc = `pic/${filename}`;
+	  const imgSrc = `pic/${encodeURIComponent(filename)}`;
 
       const card = document.createElement('div');
       card.className = 'card';
