@@ -69,7 +69,8 @@
   if (filename && name && price) {
     document.getElementById('product-img').src = `pic/${decodeURIComponent(filename)}`;
     document.getElementById('product-img').alt = name;
-    document.getElementById('product-name').textContent = name;
+	document.getElementById('product-name').innerHTML = `Dress Material for Women.<br>${name}`;
+
     
 	const discounted = parseFloat(price);
 	const actual = Math.ceil((discounted * 1.25) / 10) * 10;
