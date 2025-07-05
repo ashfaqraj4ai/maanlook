@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .product {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .price {
+      font-size: 20px;
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="product">
+  <img id="product-img" src="" alt="">
+  <div class="title" id="product-name"></div>
+  <div class="price" id="product-price"></div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const filename = params.get('filename');
+  const name = params.get('name');
+  const price = params.get('price');
+
+  if (filename && name && price) {
+    document.getElementById('product-img').src = `pic/${decodeURIComponent(filename)}`;
+    document.getElementById('product-img').alt = name;
+    document.getElementById('product-name').textContent = name.toUpperCase();
+    document.getElementById('product-price').textContent = `Rs. ${price}`;
+  } else {
+    document.body.innerHTML = '<p>Invalid product details.</p>';
+  }
+</script>
+
+</body>
+</html>
