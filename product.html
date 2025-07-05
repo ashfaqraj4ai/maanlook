@@ -6,37 +6,58 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9f9;
+      margin: 40px;
+      background-color: #fff;
     }
-    .product {
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
     }
-    .product img {
+    .product-image img {
+      max-width: 350px;
       width: 100%;
-      max-width: 400px;
       border: 1px solid #ccc;
+    }
+    .product-info {
+      max-width: 400px;
+    }
+    .product-info h2 {
+      font-size: 22px;
       margin-bottom: 20px;
     }
-    .title {
-      font-size: 24px;
+    .price-label {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .contact {
+      margin-top: 30px;
       font-weight: bold;
     }
-    .price {
-      font-size: 20px;
-      color: green;
-      margin-top: 10px;
+    .contact span {
+      display: block;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-<div class="product">
-  <img id="product-img" src="" alt="">
-  <div class="title" id="product-name"></div>
-  <div class="price" id="product-price"></div>
+<div class="product-container">
+  <div class="product-image">
+    <img id="product-img" src="" alt="Product Image">
+  </div>
+  <div class="product-info">
+    <h2 id="product-name">Dress Material for Women.</h2>
+	<div class="price-label">Actual Price: <span id="actual-price"></span></div>
+	<div class="price-label">Discounted Price: <span id="discounted-price"></span></div>
+
+
+    <div class="contact">
+      To Order Contact:
+      <span>WhatsApp No: 9828982898</span>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -48,8 +69,13 @@
   if (filename && name && price) {
     document.getElementById('product-img').src = `pic/${decodeURIComponent(filename)}`;
     document.getElementById('product-img').alt = name;
-    document.getElementById('product-name').textContent = name.toUpperCase();
-    document.getElementById('product-price').textContent = `Rs. ${price}`;
+    document.getElementById('product-name').textContent = name;
+    document.getElementById('discounted-price').textContent = price;
+	
+	const discounted = parseFloat(price);
+	const actual = Math.ceil((discounted * 1.25) / 10) * 10;
+	document.getElementById('actual-price').textContent = actual;
+	
   } else {
     document.body.innerHTML = '<p>Invalid product details.</p>';
   }
